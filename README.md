@@ -1,10 +1,10 @@
-# Tietokantasovelluksen esittelysivu
+# Foosion
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](https://lleevi.users.cs.helsinki.fi/tsoha/)
+* [Linkki dokumentaatiooni](https://github.com/leevilehtonen/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Työn aiheena on keskustelufoorumi kaikille ruoanlaitosta kiinnostuneille. Keskustelufoorumille tulee keskustelualueita eri aihepiireihin liittyen. Jokaiselle alueelle on käyttäjien mahdollista aloittaa keskuteluja valitsemistaan aiheistaan. Jokaiseen keskusteluun lisätään myös tagien käyttömahdollisuus, jolloin keskusteluja voidaan hakea ajan, käyttäjän ja aiheen lisäksi myös avainsanoilla. Keskustelufoormille kirjoittaminen vaatii käyttäjän rekisteröintiä, mutta lukeminen on kaikille avointa.
