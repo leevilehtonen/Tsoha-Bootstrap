@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron" id="title-jumbotron">
+    <div class="mx-auto">
+        <h1 class="display-4">Alueet</h1>
+        <p class="lead">Foosion keskustelufoorumin keskustelualueet</p>
+    </div>
+</div>
+
+<hr class="my-4">
+
+
+<div class="title-row row">
+    <div class="col-5 col-sm-6 col-md-8">
+        <h4>Nimi</h4>
+    </div>
+    <div class="col-2 col-sm-2 col-md-1">
+        <h6>Aiheita</h6>
+    </div>
+    <div class="col-2 col-sm-2 col-md-1">
+        <h6>Viestejä</h6>
+    </div>
+    <div class="col-3 col-sm-2 col-md-2">
+        <h6>Viimeisin</h6>
+    </div>
+
+</div>
+
+
+<div class="card">
+    <ul class="list-group list-group-flush list-group-striped list-group-hover">
+        <li class="list-group-item row">
+            <div class="col-5 col-sm-6 col-md-8">
+                <h5 class="list-group-item-title"><a href="#">Otsikko</a></h5>
+                <small class="text-muted">Tähän tulee alueen kuvaus</small>
+            </div>
+            <div class="col-2 col-sm-2 col-md-1">2</div>
+            <div class="col-2 col-sm-2 col-md-1">5</div>
+            <div class="col-3 col-sm-2 col-md-2">
+                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
+                <small class="text-muted">01.01.2017 18:42 UTC</small>
+            </div>
+        </li>
+        <li class="list-group-item row">
+            <div class="col-5 col-sm-6 col-md-8">
+                <h5 class="list-group-item-title"><a href="#">Otsikko</a></h5>
+                <small class="text-muted">Tähän tulee alueen kuvaus</small>
+            </div>
+            <div class="col-2 col-sm-2 col-md-1">2</div>
+            <div class="col-2 col-sm-2 col-md-1">5</div>
+            <div class="col-3 col-sm-2 col-md-2">
+                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
+                <small class="text-muted">01.01.2017 18:42 UTC</small>
+            </div>
+        </li>
+        <li class="list-group-item row">
+            <div class="col-5 col-sm-6 col-md-8">
+                <h5 class="list-group-item-title"><a href="#">Otsikko</a></h5>
+                <small class="text-muted">Tähän tulee alueen kuvaus</small>
+            </div>
+            <div class="col-2 col-sm-2 col-md-1">2</div>
+            <div class="col-2 col-sm-2 col-md-1">5</div>
+            <div class="col-3 col-sm-2 col-md-2">
+                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
+                <small class="text-muted">01.01.2017 18:42 UTC</small>
+            </div>
+        </li>
+    </ul>
+</div>
+{% endblock %}
