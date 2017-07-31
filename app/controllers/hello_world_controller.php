@@ -24,4 +24,9 @@ class HelloWorldController extends BaseController
     {
         View::make('suunnitelmat/alueet.html');
     }
+
+    public static function keskustelut()
+    {
+        View::make('suunnitelmat/keskustelut.html');
+    }
 }

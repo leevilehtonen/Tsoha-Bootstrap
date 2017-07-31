@@ -10,7 +10,6 @@ body {
 .navbar {
     margin-bottom: 20px;
 }
-
 #main-container {
     margin-bottom: 100px;
 }
@@ -18,19 +17,16 @@ body {
 #title-jumbotron {
     padding: 1rem;
 }
-
 .list-group-item {
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 6px;
     padding-right: 6px;
 }
-
 .title-row {
     padding-left: 6px;
     padding-right: 6px;
 }
-
 .row {
     margin-left: 0;
     margin-right: 0;
@@ -43,15 +39,38 @@ ul.list-group.list-group-striped li:nth-of-type(odd) {
 ul.list-group.list-group-hover li:hover {
     background-color: #f5f5f5;
 }
-
 .list-group-item-title {
     margin-bottom: 0;
 }
-
 .list-group-item-poster {
     margin-bottom: 0;
 }
 
+#add-btn {
+    margin-top: 20px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tag {
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.bootstrap-tagsinput {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    box-shadow: none;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    line-height: 1.25;
+}
+
+.modal-footer {
+    border-top: 1px solid #e5e5e5;
+}
 .footer {
     position: absolute;
     bottom: 0;

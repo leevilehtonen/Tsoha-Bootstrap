@@ -13,4 +13,7 @@ $routes->get('/etusivu', function () {
 $routes->get('/alueet', function () {
     HelloWorldController::alueet();
 });
+$routes->get('/keskustelut', function () {
+    HelloWorldController::keskustelut();
+});
 
