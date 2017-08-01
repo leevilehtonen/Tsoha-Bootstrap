@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron" id="title-jumbotron">
+    <div class="mx-auto">
+        <h1 class="display-4">Otsikko</h1>
+        <p class="lead">
+            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
+            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
+            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
+            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
+        </p>
+    </div>
+</div>
+<hr class="my-4">
+
+<div class="card post">
+    <div class="card-header clearfix">
+        <h5 class="float-left post-poster"><a href="#">Käyttäjänimi</a></h5>
+        <span class="float-right">01.01.2017 18:42 UTC</span>
+    </div>
+    <div class="card-block">
+        <p class="card-text">Tähän tulee käyttäjän lähettämä viesti. Lorem ipsum...</p>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-info btn-sm">Muokkaa</button>
+        <button type="button" class="btn btn-danger btn-sm">Poista</button>
+    </div>
+</div>
+<div class="card post">
+    <div class="card-header clearfix">
+        <h5 class="float-left post-poster"><a href="#">Käyttäjänimi</a></h5>
+        <span class="float-right">01.01.2017 18:42 UTC</span>
+    </div>
+    <div class="card-block">
+        <p class="card-text">Tähän tulee käyttäjän lähettämä viesti. Lorem ipsum...</p>
+    </div>
+</div>
+<div class="card post">
+    <div class="card-header clearfix">
+        <h5 class="float-left post-poster"><a href="#">Käyttäjänimi</a></h5>
+        <span class="float-right">01.01.2017 18:42 UTC</span>
+    </div>
+    <div class="card-block">
+        <p class="card-text">Tähän tulee käyttäjän lähettämä viesti. Lorem ipsum...</p>
+    </div>
+</div>
+<hr class="my-4">
+
+<div class="card card-outline-info">
+    <h3 class="card-header card-info text-white">Vastaa</h3>
+    <div class="card-block">
+        <form>
+            <div class="form-group">
+                <label for="input-message">Viesti</label>
+                <textarea class="form-control" id="input-message" rows="5" name="messgae"
+                          placeholder="Kirjoita vastauksesi" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Lähetä</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

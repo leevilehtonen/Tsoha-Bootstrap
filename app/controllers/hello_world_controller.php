@@ -15,18 +15,43 @@ class HelloWorldController extends BaseController
         View::make('helloworld.html');
     }
 
-    public static function etusivu()
+    public static function home()
     {
         View::make('suunnitelmat/etusivu.html');
     }
 
-    public static function alueet()
+    public static function discussions()
     {
         View::make('suunnitelmat/alueet.html');
     }
 
-    public static function keskustelut()
+    public static function topics()
     {
         View::make('suunnitelmat/keskustelut.html');
+    }
+
+    public static function topic()
+    {
+        View::make('suunnitelmat/keskustelu.html');
+    }
+
+    public static function profile()
+    {
+        View::make('suunnitelmat/profiili.html');
+    }
+
+    public static function profileEdit()
+    {
+        View::make('suunnitelmat/profiilimuokkaus.html');
+    }
+
+    public static function login()
+    {
+        View::make('suunnitelmat/kirjaudu.html');
+    }
+
+    public static function signup()
+    {
+        View::make('suunnitelmat/rekisteröidy.html');
     }
 }

@@ -7,13 +7,27 @@ $routes->get('/', function () {
 $routes->get('/hiekkalaatikko', function () {
     HelloWorldController::sandbox();
 });
-$routes->get('/etusivu', function () {
-    HelloWorldController::etusivu();
+$routes->get('/home', function () {
+    HelloWorldController::home();
 });
-$routes->get('/alueet', function () {
-    HelloWorldController::alueet();
+$routes->get('/discussions', function () {
+    HelloWorldController::discussions();
 });
-$routes->get('/keskustelut', function () {
-    HelloWorldController::keskustelut();
+$routes->get('/topics', function () {
+    HelloWorldController::topics();
 });
-
+$routes->get('/topics/1', function () {
+    HelloWorldController::topic();
+});
+$routes->get('/profile/1', function () {
+    HelloWorldController::profile();
+});
+$routes->get('/profile/1/edit', function () {
+    HelloWorldController::profileEdit();
+});
+$routes->get('/login', function () {
+    HelloWorldController::login();
+});
+$routes->get('/signup', function () {
+    HelloWorldController::signup();
+});
