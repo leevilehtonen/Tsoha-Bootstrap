@@ -11,7 +11,7 @@ Työn aiheena on keskustelufoorumi kaikille ruoanlaitosta kiinnostuneille. Kesku
 
 ### Linkit suunnitelmasivuille
 
-- [Etusivu](https://lleevi.users.cs.helsinki.fi/tsoha/)
+- [Etusivu](https://lleevi.users.cs.helsinki.fi/tsoha/home)
 - [Alueet](https://lleevi.users.cs.helsinki.fi/tsoha/discussions)
 - [Keskustelut](https://lleevi.users.cs.helsinki.fi/tsoha/topics)
 - [Keskustelu](https://lleevi.users.cs.helsinki.fi/tsoha/topics/1)
