@@ -1,12 +1,19 @@
 <?php
 
+//DEFAULT
 $routes->get('/', function () {
     DefaultController::index();
 });
 
-
-$routes->get('/discussions', function () {
+//DISCUSSIONS
+$routes->get('/discussion', function () {
     DiscussionController::index();
+});
+$routes->get('/discussion/:id', function ($id) {
+    DiscussionController::show($id);
+});
+$routes->post('/discussion', function () {
+    DiscussionController::store();
 });
 
 

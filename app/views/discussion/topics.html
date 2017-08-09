@@ -5,7 +5,7 @@
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
         <h1 class="display-4">Keskustelut</h1>
-        <p class="lead">[Otsikko] -alueen keskustelut</p>
+        <p class="lead">{{discussion.title}} -alueen keskustelut</p>
     </div>
 </div>
 
@@ -27,39 +27,20 @@
 
 <div class="card">
     <ul class="list-group list-group-flush list-group-striped list-group-hover">
+        {% for topic in topics %}
         <li class="list-group-item list-group-item-container row">
             <div class="col-7 col-sm-8 col-md-9">
-                <h5 class="list-group-item-title"><a href="#">Otsikko</a></h5>
-                <small class="text-muted">Tähän tulee pala aloitusviestistä...</small>
+                <h5 class="list-group-item-title"><a href="#">{{topic.title}}</a></h5>
+                <small class="text-muted">{{topic.getFirst().content|slice(0, 32)}}...</small>
             </div>
-            <div class="col-2 col-sm-2 col-md-1">2</div>
+            <div class="col-2 col-sm-2 col-md-1">{{topic.getPostCount()}}</div>
             <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
-                <small class="text-muted">01.01.2017 18:42 UTC</small>
+                <h6 class="list-group-item-poster"><a href="#">ACCOUNT_ID: {{topic.getLast().account_id|default('Ei
+                    yhtään viestiä vielä')}}</a></h6>
+                <small class="text-muted">{{topic.getLast().posted}}</small>
             </div>
         </li>
-        <li class="list-group-item list-group-item-container row">
-            <div class="col-7 col-sm-8 col-md-9">
-                <h5 class="list-group-item-title"><a href="#">Otsikko</a></h5>
-                <small class="text-muted">Tähän tulee pala aloitusviestistä...</small>
-            </div>
-            <div class="col-2 col-sm-2 col-md-1">2</div>
-            <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
-                <small class="text-muted">01.01.2017 18:42 UTC</small>
-            </div>
-        </li>
-        <li class="list-group-item list-group-item-container row">
-            <div class="col-7 col-sm-8 col-md-9">
-                <h5 class="list-group-item-title"><a href="#">Otsikko</a></h5>
-                <small class="text-muted">Tähän tulee pala aloitusviestistä...</small>
-            </div>
-            <div class="col-2 col-sm-2 col-md-1">2</div>
-            <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
-                <small class="text-muted">01.01.2017 18:42 UTC</small>
-            </div>
-        </li>
+        {% endfor %}
     </ul>
 </div>
 <button type="button" id="add-btn" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">Luo keskustelu

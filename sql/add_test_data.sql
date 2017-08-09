@@ -28,7 +28,9 @@ INSERT INTO topic (discussion_id, title) VALUES ((SELECT id
 INSERT INTO topic (discussion_id, title) VALUES ((SELECT id
                                                   FROM discussion d
                                                   WHERE d.title = 'Toinen alue'), 'Kaikkea kivaa');
-
+INSERT INTO topic (discussion_id, title) VALUES ((SELECT id
+                                                  FROM discussion d
+                                                  WHERE d.title = 'Toinen alue'), 'Voi juku');
 
 INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
@@ -83,7 +85,7 @@ INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
 INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
-                                                                'testuser3'),
+                                                                'testuser1'),
                                                          (SELECT id
                                                           FROM topic t
                                                           WHERE t.title =

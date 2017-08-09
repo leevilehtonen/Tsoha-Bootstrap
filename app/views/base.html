@@ -34,11 +34,11 @@
         <a class="navbar-brand" href="{{base_path}}">Foosion</a>
         <div class="collapse navbar-collapse" id="containerNavbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{{base_path}}">Etusivu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{base_path}}/forum">Foorumi</a>
+                    <a class="nav-link" href="{{base_path}}/discussion">Foorumi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{base_path}}/profile">Profiili</a>
@@ -59,6 +59,7 @@
 </div>
 
 <div class="container" id="main-container">
+
     <!-- Dynaaminen sisältö tulee tähän -->
     {% block content %}{% endblock %}
 </div>

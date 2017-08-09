@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
         <h1 class="display-4">Alueet</h1>
@@ -33,14 +35,16 @@
         {% for discussion in discussions %}
         <li class="list-group-item list-group-item-container row">
             <div class="col-5 col-sm-6 col-md-8">
-                <h5 class="list-group-item-title"><a href="{{base_path}}/discussions/{{discussion.id}}">{{discussion.title}}</a></h5>
+                <h5 class="list-group-item-title"><a href="{{base_path}}/discussion/{{discussion.id}}">{{discussion.title}}</a>
+                </h5>
                 <small class="text-muted">{{discussion.description}}</small>
             </div>
-            <div class="col-2 col-sm-2 col-md-1">2</div>
-            <div class="col-2 col-sm-2 col-md-1">5</div>
+            <div class="col-2 col-sm-2 col-md-1">{{discussion.getTopicCount()}}</div>
+            <div class="col-2 col-sm-2 col-md-1">{{discussion.getPostCount()}}</div>
             <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">Etunimi Sukunimi</a></h6>
-                <small class="text-muted">01.01.2017 18:42 UTC</small>
+                <h6 class="list-group-item-poster"><a href="#">ACCOUNT_ID: {{discussion.getLastPost().account_id}}</a>
+                </h6>
+                <small class="text-muted">{{discussion.getLastPost().posted}}</small>
             </div>
         </li>
        {% endfor %}
@@ -57,10 +61,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="{{base_path}}/discussion">
                     <div class="form-group">
-                        <label for="input-name">Alueen nimi</label>
-                        <input class="form-control" id="input-name" type="text" name="name"
+                        <label for="input-title">Alueen nimi</label>
+                        <input class="form-control" id="input-title" type="text" name="title"
                                placeholder="Anna alueelle nimi" required/>
                     </div>
                     <div class="form-group">

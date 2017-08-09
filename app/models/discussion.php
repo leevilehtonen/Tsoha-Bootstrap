@@ -32,6 +32,21 @@ class Discussion extends BaseModel
         return $discussions;
     }
 
+    public function getTopicCount()
+    {
+        return Topic::getTopicCountByDiscussion($this->id);
+    }
+
+    public function getPostCount()
+    {
+        return Post::getPostCountByDiscussion($this->id);
+    }
+
+    public function getLastPost()
+    {
+        return Post::getByDiscussionLastPost($this->id);
+    }
+
     public function save()
     {
         $query = DB::connection()->prepare('INSERT INTO discussion(title, description) VALUES(:title, :description) RETURNING id');
@@ -57,6 +72,5 @@ class Discussion extends BaseModel
         }
         return null;
     }
-
 
 }
