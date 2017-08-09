@@ -30,7 +30,7 @@ INSERT INTO topic (discussion_id, title) VALUES ((SELECT id
                                                   WHERE d.title = 'Toinen alue'), 'Kaikkea kivaa');
 
 
-INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
+INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
                                                                 'testuser1'),
@@ -40,7 +40,7 @@ INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
                                                                 'Eka keskustelu'),
                                                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
-INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
+INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
                                                                 'testuser2'),
@@ -50,7 +50,7 @@ INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
                                                                 'Eka keskustelu'),
                                                          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
-INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
+INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
                                                                 'testuser3'),
@@ -60,7 +60,7 @@ INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
                                                                 'Eka keskustelu'),
                                                          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
-INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
+INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
                                                                 'testuser1'),
@@ -70,7 +70,7 @@ INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
                                                                 'Mitä kuuluu?'),
                                                          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
-INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
+INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
                                                                 'testuser2'),
@@ -80,7 +80,7 @@ INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
                                                                 'Mitä kuuluu?'),
                                                          'Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
-INSERT INTO post (account_id, topic_io, content) VALUES ((SELECT id
+INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                           FROM account a
                                                           WHERE a.username =
                                                                 'testuser3'),

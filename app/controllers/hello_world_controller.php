@@ -1,5 +1,6 @@
 <?php
 
+require 'app/models/post.php';
 class HelloWorldController extends BaseController
 {
 
@@ -11,8 +12,11 @@ class HelloWorldController extends BaseController
 
     public static function sandbox()
     {
-        // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        $post = Post::find(1);
+        $posts = Post::all();
+        // Kint-luokan dump-metodi tulostaa muuttujan arvon
+        Kint::dump($posts);
+        Kint::dump($post);
     }
 
     public static function home()
