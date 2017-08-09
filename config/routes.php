@@ -1,9 +1,17 @@
 <?php
 
 $routes->get('/', function () {
-    HelloWorldController::index();
+    DefaultController::index();
 });
 
+
+$routes->get('/discussions', function () {
+    DiscussionController::index();
+});
+
+
+
+//SUUNNITELMAT JA TESTIT
 $routes->get('/hiekkalaatikko', function () {
     HelloWorldController::sandbox();
 });
