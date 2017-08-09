@@ -34,24 +34,13 @@ class Post extends BaseModel
         return $posts;
     }
 
-    public static function save()
+    public function save()
     {
-        $query = DB::connection()->prepare('INSERT INTO Post(account_id, topic_id, content, posted) VALUES(:account_id, :topic_id, :content, :posted) RETURNING id');
-        $query->execute(array('account_id' => $a));
+        $query = DB::connection()->prepare('INSERT INTO post(account_id, topic_id, content, posted) VALUES(:account_id, :topic_id, :content, :posted) RETURNING id');
+        $query->execute(array('account_id' => $this->account_id, 'topic_id' => $this->topic_id, 'content'=>$this->content, 'posted'=>$this->posted));
+
         $row = $query->fetch();
-
-        if ($row) {
-            $post = new Post(array(
-                'id' => $row['id'],
-                'account_id' => $row['account_id'],
-                'topic_id' => $row['topic_id'],
-                'content' => $row['content'],
-                'posted' => $row['posted'],
-            ));
-            return $post;
-        }
-        return null;
-
+        $this->id = $row['id'];
     }
 
     public function find($id)
@@ -72,4 +61,6 @@ class Post extends BaseModel
         }
         return null;
     }
+
+
 }

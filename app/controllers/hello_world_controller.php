@@ -1,6 +1,7 @@
 <?php
 
 require 'app/models/post.php';
+require 'app/models/discussion.php';
 class HelloWorldController extends BaseController
 {
 
@@ -12,11 +13,11 @@ class HelloWorldController extends BaseController
 
     public static function sandbox()
     {
-        $post = Post::find(1);
-        $posts = Post::all();
+        $discussion = Discussion::find(1);
+        $discussions = Discussion::all();
         // Kint-luokan dump-metodi tulostaa muuttujan arvon
-        Kint::dump($posts);
-        Kint::dump($post);
+        Kint::dump($discussions);
+        Kint::dump($discussion);
     }
 
     public static function home()
