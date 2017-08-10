@@ -22,5 +22,5 @@ Työn aiheena on keskustelufoorumi kaikille ruoanlaitosta kiinnostuneille. Kesku
 
 ### Linkit discussion
 - [Aihealueiden listaus](https://lleevi.users.cs.helsinki.fi/tsoha/discussion
-- [Aihealueiden lisäys (sivulla olevasta linkistä aukeaa dialogi)](https://lleevi.users.cs.helsinki.fi/tsoha/discussion)
+- [Aihealueiden lisäys, sivulla olevasta linkistä aukeaa dialogi](https://lleevi.users.cs.helsinki.fi/tsoha/discussion)
 - [Aihealueen sivu](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1)
