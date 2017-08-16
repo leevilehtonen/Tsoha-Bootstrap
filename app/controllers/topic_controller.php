@@ -11,7 +11,7 @@ class TopicController extends BaseController{
     {
         $topic = Topic::find($id);
         $posts = Post::getByTopic($id);
-        View::make('discussion/topics.html', array('topics' => $topic, 'posts' => $posts));
+        View::make('topic/posts.html', array('topic' => $topic, 'posts' => $posts));
     }
 
 

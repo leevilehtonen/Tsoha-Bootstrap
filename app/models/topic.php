@@ -5,7 +5,6 @@
  * Date: 7.8.2017
  * Time: 16:20
  */
-require 'app/models/post.php';
 
 class Topic extends BaseModel
 {

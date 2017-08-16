@@ -6,6 +6,9 @@
  * Time: 20.54
  */
 
+require 'app/models/post.php';
+
+
 class Discussion extends BaseModel
 {
     public $id, $title, $description;
