@@ -16,6 +16,11 @@ $routes->post('/discussion', function () {
     DiscussionController::store();
 });
 
+//Topics
+$routes->get('/discussion/:discussionId/topic/:topicId', function ($discussionId,$topicId ) {
+    TopicController::show($topicId);
+});
+
 
 
 //SUUNNITELMAT JA TESTIT

@@ -9,6 +9,7 @@ require 'app/models/discussion.php';
 require 'app/models/topic.php';
 
 class DiscussionController extends BaseController{
+
     public static function index(){
         $discussions = Discussion::all();
         View::make('discussion/index.html', array('discussions' => $discussions));
