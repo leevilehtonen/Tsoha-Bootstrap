@@ -5,8 +5,6 @@ require 'app/models/topic.php';
 
 class TopicController extends BaseController{
 
-
-
     public static function show($id)
     {
         $topic = Topic::find($id);
