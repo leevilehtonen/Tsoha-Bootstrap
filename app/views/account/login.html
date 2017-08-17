@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron" id="title-jumbotron">
+    <div class="mx-auto">
+        <h1 class="display-4">Kirjaudu sisään</h1>
+        <p class="lead">
+            Syötä käyttäjätunnuksesi ja salasanasi kirjautuaksesi Foosion foorumille
+        </p>
+    </div>
+</div>
+<hr class="my-4">
+<form method="post" action="{{base_path}}/login">
+    <div class="form-group">
+        <label for="input-username">Käyttäjätunnus</label>
+        <input type="text" name="username" class="form-control" id="input-username" placeholder="Käyttäjätunnus">
+    </div>
+    <div class="form-group">
+        <label for="input-password">Salasana</label>
+        <input type="password" name="password" class="form-control" id="input-password" placeholder="Salasana">
+    </div>
+    <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+</form>
+
+{% endblock %}

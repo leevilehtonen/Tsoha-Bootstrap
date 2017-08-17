@@ -3,6 +3,7 @@
 {% block content %}
 
 
+
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
         <h1 class="display-4">Alueet</h1>
@@ -42,7 +43,8 @@
             <div class="col-2 col-sm-2 col-md-1">{{discussion.getTopicCount()}}</div>
             <div class="col-2 col-sm-2 col-md-1">{{discussion.getPostCount()}}</div>
             <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">ACCOUNT_ID: {{discussion.getLastPost().account_id}}</a>
+                <h6 class="list-group-item-poster"><a href="#">{{discussion.getLastPost().getPoster().username|default('Ei
+                    yhtään viestiä vielä')}}</a>
                 </h6>
                 <small class="text-muted">{{discussion.getLastPost().posted}}</small>
             </div>
@@ -50,7 +52,7 @@
        {% endfor %}
     </ul>
 </div>
-<button type="button" id="add-btn" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">Luo keskustelu
+<button type="button" id="add-btn" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">Luo alue
 </button>
 <div class="modal" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -65,12 +67,13 @@
                     <div class="form-group">
                         <label for="input-title">Alueen nimi</label>
                         <input class="form-control" id="input-title" type="text" name="title"
-                               placeholder="Anna alueelle nimi" required/>
+                               placeholder="Anna alueelle nimi" value="{{attributes.title}}" required/>
                     </div>
                     <div class="form-group">
                         <label for="input-description">Kuvaus</label>
                         <textarea class="form-control" id="input-description" rows="2" name="description"
-                                  placeholder="Anna alueelle kuvaus" required></textarea>
+                                  placeholder="Anna alueelle kuvaus" value="{{attributes.description}}"
+                                  required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Lisää</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Peruuta</button>
