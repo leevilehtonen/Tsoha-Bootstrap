@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
+
 {% block content %}
+
+{% if error%}
+<div class=" alert alert-danger" role="alert">
+    {{error}}
+</div>
+{% endif %}
+
+{% if message %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+</div>
+{% endif %}
+
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
         <h1 class="display-4">Kirjaudu sisään</h1>

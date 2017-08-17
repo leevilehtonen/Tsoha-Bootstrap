@@ -15,7 +15,7 @@ class Account extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
-        $this->validators = array();
+        $this->validators = array('validate_email', 'validate_username', 'validate_password');
     }
 
     public static function find($id)
@@ -46,7 +46,7 @@ class Account extends BaseModel
     public static function authenticate($username, $password)
     {
         $account = Account::findByUsername($username);
-        if (password_verify($password, $account->password)) {
+        if ($account != null && password_verify($password, $account->password)) {
             return $account;
         } else {
             return null;
@@ -78,6 +78,31 @@ class Account extends BaseModel
         }
     }
 
+    public static function findByEmail($email)
+    {
+        $query = DB::connection()->prepare('SELECT * FROM account WHERE email = :email LIMIT 1');
+        $query->execute(array('email' => $email));
+        $row = $query->fetch();
+
+        if ($row) {
+            $account = new Account(
+                array(
+                    'id' => $row['id'],
+                    'username' => $row['username'],
+                    'password' => $row['password'],
+                    'email' => $row['email'],
+                    'firstname' => $row['firstname'],
+                    'lastname' => $row['lastname'],
+                    'status' => $row['status']
+                )
+            );
+            return $account;
+
+        } else {
+            return null;
+        }
+    }
+
     public function save()
     {
         $query = DB::connection()->prepare('INSERT INTO account(username, password, email, firstname, lastname, status) VALUES(:username, :password, :email, :firstname, :lastname, :status) RETURNING id');
@@ -86,6 +111,58 @@ class Account extends BaseModel
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+
+    public function validate_username()
+    {
+        $errors = array();
+        if ($this->username == '' || $this->username == null) {
+            $errors[] = 'Käyttäjätunnus ei voi olla tyhjä';
+        }
+
+        if (strlen($this->username) < 4) {
+            $errors[] = 'Käyttäjätunnuksen tulee olla vähintään neljä merkkiä pitkä';
+            return $errors;
+        }
+
+        if (Account::findByUsername($this->username) != null) {
+            $errors[] = 'Käyttäjätunnus on jo olemassa';
+        }
+        return $errors;
+    }
+
+    public function validate_email()
+    {
+        $errors = array();
+        if ($this->email == '' || $this->email == null) {
+            $errors[] = 'Sähköposti ei voi olla tyhjä';
+        }
+
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Sähköposti ei ole kelvollisessa muodosssa';
+        }
+
+        if (Account::findByEmail($this->email) != null) {
+            $errors[] = 'Sähköpostilla rekisteröity käyttäjä on jo olemassa';
+        }
+
+        return $errors;
+    }
+
+    public function validate_password()
+    {
+        $errors = array();
+        if ($this->username == '' || $this->username == null) {
+            $errors[] = 'Salasana ei voi olla tyhjä';
+        }
+
+        if (strlen($this->username) < 6) {
+            $errors[] = 'Salasanan tulee olla vähintään kuusi merkkiä pitkä';
+        }
+
+        return $errors;
+    }
+
+
 
 
 }

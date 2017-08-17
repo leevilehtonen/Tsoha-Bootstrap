@@ -28,6 +28,7 @@ class TopicController extends BaseController{
             'discussion_id' => $id
         );
         $postAttributes = array(
+            'account_id' => self::get_user_logged_in()->id,
             'content' => $attributes['message'],
         );
         $topic = new Topic($topicAttributes);

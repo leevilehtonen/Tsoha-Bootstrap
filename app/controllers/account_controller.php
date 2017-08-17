@@ -51,4 +51,12 @@ class AccountController extends BaseController
         }
     }
 
+    public static function handle_logout()
+    {
+        $_SESSION = array();
+        unset($_SESSION);
+        session_destroy();
+        Redirect::to('/', array('message' => 'Kirjauduit ulos'));
+    }
+
 }

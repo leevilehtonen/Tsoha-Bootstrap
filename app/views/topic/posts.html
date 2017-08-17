@@ -22,6 +22,7 @@
         <p class="card-text">{{post.content}}</p>
     </div>
     <div class="card-footer">
+        {% if user_logged_in.id == post.account_id %}
         <form method="post"
               style="display: inline-block"
               action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}/post/{{post.id}}/edit">
@@ -32,6 +33,7 @@
               action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}/post/{{post.id}}/destroy">
             <button type="submit" class="btn btn-danger btn-sm">Poista</button>
         </form>
+        {% endif %}
     </div>
 </div>
 {% endfor %}

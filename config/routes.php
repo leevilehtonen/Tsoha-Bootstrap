@@ -56,6 +56,9 @@ $routes->get('/register', function () {
 $routes->post('/register', function () {
     AccountController::handle_register();
 });
+$routes->post('/logout', function () {
+    AccountController::handle_logout();
+});
 
 
 

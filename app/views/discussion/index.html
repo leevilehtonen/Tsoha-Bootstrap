@@ -2,7 +2,19 @@
 
 {% block content %}
 
+{% if errors%}
+<div class=" alert alert-danger" role="alert">
+    {% for error in errors%}
+    <p>{{error}}</p>
+    {% endfor %}
+</div>
+{% endif %}
 
+{% if message %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+</div>
+{% endif %}
 
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
@@ -72,8 +84,8 @@
                     <div class="form-group">
                         <label for="input-description">Kuvaus</label>
                         <textarea class="form-control" id="input-description" rows="2" name="description"
-                                  placeholder="Anna alueelle kuvaus" value="{{attributes.description}}"
-                                  required></textarea>
+                                  placeholder="Anna alueelle kuvaus"
+                                  required>{{attributes.description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Lisää</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Peruuta</button>

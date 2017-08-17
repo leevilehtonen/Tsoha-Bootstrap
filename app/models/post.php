@@ -8,7 +8,7 @@ class Post extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
-        $this->validators = array();
+        $this->validators = array('validate_content');
 
     }
 
@@ -169,6 +169,16 @@ class Post extends BaseModel
     public function getPoster()
     {
         return Account::find($this->account_id);
+    }
+
+    public function validate_content()
+    {
+        $errors = array();
+        if ($this->content == '' || $this->content == null) {
+            $errors[] = 'Viestin sisältö ei voi olla tyhjä';
+        }
+
+        return $errors;
     }
 
 
