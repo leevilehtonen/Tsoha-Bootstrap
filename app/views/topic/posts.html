@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if errors%}
+<div class=" alert alert-danger" role="alert">
+    {% for error in errors%}
+    <p>{{error}}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if message %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+</div>
+{% endif %}
+
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
         <h1 class="display-4">{{topic.title}}</h1>
@@ -39,6 +54,8 @@
 {% endfor %}
 <hr class="my-4">
 
+{% if user_logged_in %}
+
 <div class="card card-outline-info">
     <h3 class="card-header card-info text-white">Vastaa</h3>
     <div class="card-block">
@@ -52,4 +69,5 @@
         </form>
     </div>
 </div>
+{% endif %}
 {% endblock %}
