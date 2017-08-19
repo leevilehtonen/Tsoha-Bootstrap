@@ -46,7 +46,9 @@
         {% for topic in topics %}
         <li class="list-group-item list-group-item-container row">
             <div class="col-7 col-sm-8 col-md-9">
-                <h5 class="list-group-item-title"><a href="{{base_path}}/discussion/{{discussion.id}}/topic/{{topic.id}}">{{topic.title}}</a></h5>
+                <h5 class="list-group-item-title"><a
+                        href="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}">{{topic.title}}</a>
+                </h5>
                 <small class="text-muted">{{topic.getFirst().content|slice(0, 32)}}...</small>
             </div>
             <div class="col-2 col-sm-2 col-md-1">{{topic.getPostCount()}}</div>

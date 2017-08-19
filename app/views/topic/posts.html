@@ -44,6 +44,8 @@
             <button type="submit" class="btn btn-info btn-sm">Muokkaa</button>
         </form>
         <form method="post"
+              class="destroy-form"
+              data-confirm="Oletko varma, että haluat poistaa viestisi?"
               style="display: inline-block"
               action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}/post/{{post.id}}/destroy">
             <button type="submit" class="btn btn-danger btn-sm">Poista</button>

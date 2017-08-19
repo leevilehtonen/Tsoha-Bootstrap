@@ -1,5 +1,10 @@
 <?php
 
+function check_logged_in()
+{
+    BaseController::check_logged_in();
+}
+
 //DEFAULT
 $routes->get('/', function () {
     DefaultController::index();
@@ -9,32 +14,36 @@ $routes->get('/', function () {
 $routes->get('/discussion', function () {
     DiscussionController::index();
 });
+$routes->get('/discussion/search', function () {
+    DiscussionController::search();
+});
 $routes->get('/discussion/:id', function ($id) {
     DiscussionController::show($id);
 });
-$routes->post('/discussion', function () {
+$routes->post('/discussion', 'check_logged_in', function () {
     DiscussionController::store();
 });
 
 //Topics
-$routes->post('/discussion/:discussionId', function ($discussionId) {
+$routes->post('/discussion/:discussionId', 'check_logged_in', function ($discussionId) {
     TopicController::store($discussionId);
 });
 $routes->get('/discussion/:discussionId/topic/:topicId', function ($discussionId,$topicId ) {
     TopicController::show($topicId);
 });
 
+
 //Posts
-$routes->post('/discussion/:discussionId/topic/:topicId', function ($discussionId, $topicId) {
+$routes->post('/discussion/:discussionId/topic/:topicId', 'check_logged_in', function ($discussionId, $topicId) {
     PostController::store($topicId);
 });
-$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/edit', function ($discussionId, $topicId, $postId) {
+$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/edit', 'check_logged_in', function ($discussionId, $topicId, $postId) {
     PostController::edit($postId);
 });
-$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/update', function ($discussionId, $topicId, $postId) {
+$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/update', 'check_logged_in', function ($discussionId, $topicId, $postId) {
     PostController::update($postId);
 });
-$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/destroy', function ($discussionId, $topicId, $postId) {
+$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/destroy', 'check_logged_in', function ($discussionId, $topicId, $postId) {
     PostController::destroy($postId);
 });
 

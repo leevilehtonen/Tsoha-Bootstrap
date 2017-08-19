@@ -93,54 +93,54 @@ INSERT INTO post (account_id, topic_id, content) VALUES ((SELECT id
                                                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 
-INSERT INTO tag (name) VALUES ('Ruoka');
-INSERT INTO tag (name) VALUES ('Ihmiset');
-INSERT INTO tag (name) VALUES ('Kotimaa');
-INSERT INTO tag (name) VALUES ('Herkut');
-INSERT INTO tag (name) VALUES ('Suolainen');
-INSERT INTO tag (name) VALUES ('Makea');
-INSERT INTO tag (name) VALUES ('Kotikokki');
-INSERT INTO tag (name) VALUES ('Aamupala');
-INSERT INTO tag (name) VALUES ('Kokeilu');
+INSERT INTO tag (name) VALUES ('ruoka');
+INSERT INTO tag (name) VALUES ('ihmiset');
+INSERT INTO tag (name) VALUES ('kotimaa');
+INSERT INTO tag (name) VALUES ('herkut');
+INSERT INTO tag (name) VALUES ('suolainen');
+INSERT INTO tag (name) VALUES ('makea');
+INSERT INTO tag (name) VALUES ('kotikokki');
+INSERT INTO tag (name) VALUES ('aamupala');
+INSERT INTO tag (name) VALUES ('kokeilu');
 
 INSERT INTO topic_tag (topic_id, tag_id) VALUES ((SELECT id
                                                   FROM topic t
                                                   WHERE t.title = 'Eka keskustelu'),
                                                  (SELECT id
                                                   FROM tag ta
-                                                  WHERE ta.name = 'Ruoka'));
+                                                  WHERE ta.name = 'ruoka'));
 
 INSERT INTO topic_tag (topic_id, tag_id) VALUES ((SELECT id
                                                   FROM topic t
                                                   WHERE t.title = 'Eka keskustelu'),
                                                  (SELECT id
                                                   FROM tag ta
-                                                  WHERE ta.name = 'Ihmiset'));
+                                                  WHERE ta.name = 'ihmiset'));
 
 INSERT INTO topic_tag (topic_id, tag_id) VALUES ((SELECT id
                                                   FROM topic t
                                                   WHERE t.title = 'Eka keskustelu'),
                                                  (SELECT id
                                                   FROM tag ta
-                                                  WHERE ta.name = 'Kotimaa'));
+                                                  WHERE ta.name = 'kotimaa'));
 
 INSERT INTO topic_tag (topic_id, tag_id) VALUES ((SELECT id
                                                   FROM topic t
                                                   WHERE t.title = 'Mitä kuuluu?'),
                                                  (SELECT id
                                                   FROM tag ta
-                                                  WHERE ta.name = 'Aamupala'));
+                                                  WHERE ta.name = 'aamupala'));
 
 INSERT INTO topic_tag (topic_id, tag_id) VALUES ((SELECT id
                                                   FROM topic t
                                                   WHERE t.title = 'Mitä kuuluu?'),
                                                  (SELECT id
                                                   FROM tag ta
-                                                  WHERE ta.name = 'Kokeilu'));
+                                                  WHERE ta.name = 'kokeilu'));
 
 INSERT INTO topic_tag (topic_id, tag_id) VALUES ((SELECT id
                                                   FROM topic t
                                                   WHERE t.title = 'Mitä kuuluu?'),
                                                  (SELECT id
                                                   FROM tag ta
-                                                  WHERE ta.name = 'Ihmiset'));
+                                                  WHERE ta.name = 'ihmiset'));
