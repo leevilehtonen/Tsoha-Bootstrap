@@ -77,12 +77,12 @@ class Topic extends BaseModel
 
         $tagQuery = ' ';
         foreach ($tags as $tag) {
-            $tagQuery = $tagQuery . 'tag.name = \'' . strtolower($tag) . '\' OR ';
+            $tagQuery = $tagQuery . 'ta.name = \'' . strtolower($tag) . '\' OR ';
         }
         $tagQuery = substr($tagQuery, 0, -4);
 
 
-        $query = DB::connection()->prepare('SELECT * FROM topic, tag, topic_tag WHERE topic.id = topic_tag.topic_id AND tag.id = topic_tag.tag_id AND (' . $tagQuery . ')');
+        $query = DB::connection()->prepare('SELECT t.id, t.discussion_id, t.title, t.created FROM topic as t INNER JOIN topic_tag as tt ON tt.topic_id = t.id INNER JOIN tag as ta ON ta.id = tt.tag_id WHERE ' . $tagQuery);
         $query->execute();
         $rows = $query->fetchAll();
         $topics = array();
