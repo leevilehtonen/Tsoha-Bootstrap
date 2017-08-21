@@ -82,7 +82,8 @@ class AccountController extends BaseController
         );
 
         $account = new Account($attributes);
-        $errors = $account->errors();
+        $account->password = Account::find($id)->password;
+        $errors = $account->updateErrors();
 
         if (count($errors) == 0) {
             $account->update();

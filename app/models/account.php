@@ -133,6 +133,20 @@ class Account extends BaseModel
         return $errors;
     }
 
+    public function validate_username_update()
+    {
+        $errors = array();
+        if ($this->username == '' || $this->username == null) {
+            $errors[] = 'Käyttäjätunnus ei voi olla tyhjä';
+        }
+
+        if (strlen($this->username) < 4) {
+            $errors[] = 'Käyttäjätunnuksen tulee olla vähintään neljä merkkiä pitkä';
+            return $errors;
+        }
+        return $errors;
+    }
+
     public function validate_email()
     {
         $errors = array();
@@ -146,6 +160,20 @@ class Account extends BaseModel
 
         if (Account::findByEmail($this->email) != null) {
             $errors[] = 'Sähköpostilla rekisteröity käyttäjä on jo olemassa';
+        }
+
+        return $errors;
+    }
+
+    public function validate_email_update()
+    {
+        $errors = array();
+        if ($this->email == '' || $this->email == null) {
+            $errors[] = 'Sähköposti ei voi olla tyhjä';
+        }
+
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Sähköposti ei ole kelvollisessa muodosssa';
         }
 
         return $errors;
@@ -182,6 +210,12 @@ class Account extends BaseModel
     {
         $query = DB::connection()->prepare('DELETE FROM account WHERE id = :id');
         $query->execute(array('id' => $this->id));
+    }
+    public function updateErrors() {
+        $errors = array();
+        $errors = array_merge($errors, $this->validate_email_update());
+        $errors = array_merge($errors, $this->validate_username_update());
+        return $errors;
     }
 
 
