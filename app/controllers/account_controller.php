@@ -88,7 +88,7 @@ class AccountController extends BaseController
             $account->update();
             Redirect::to('/account/' . $account->id, array('message' => 'Muokkasit käyttäjätietojasi onnistuneesti'));
         } else {
-            View::make('account/edit_profile.html', array($account, 'errors' => $errors));
+            View::make('account/edit_profile.html', array('account' => $account, 'errors' => $errors));
         }
     }
 
