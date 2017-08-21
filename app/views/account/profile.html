@@ -29,6 +29,8 @@
         <span>{{account.getPostCount()}}</span>
     </li>
 </ul>
+
+{% if user_logged_in.id == account.id %}
 <form method="post"
       style="display: inline-block"
       action="{{base_path}}/account/{{account.id}}/edit">
@@ -41,4 +43,5 @@
       action="{{base_path}}/account/{{account.id}}/destroy">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
+{% endif %}
 {% endblock %}
