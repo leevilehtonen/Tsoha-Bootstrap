@@ -17,8 +17,47 @@ $routes->post('/discussion', function () {
 });
 
 //Topics
+$routes->post('/discussion/:discussionId', function ($discussionId) {
+    TopicController::store($discussionId);
+});
 $routes->get('/discussion/:discussionId/topic/:topicId', function ($discussionId,$topicId ) {
     TopicController::show($topicId);
+});
+
+//Posts
+$routes->post('/discussion/:discussionId/topic/:topicId', function ($discussionId, $topicId) {
+    PostController::store($topicId);
+});
+$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/edit', function ($discussionId, $topicId, $postId) {
+    PostController::edit($postId);
+});
+$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/update', function ($discussionId, $topicId, $postId) {
+    PostController::update($postId);
+});
+$routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/destroy', function ($discussionId, $topicId, $postId) {
+    PostController::destroy($postId);
+});
+
+
+// Account
+$routes->get('/login', function () {
+    AccountController::login();
+});
+
+$routes->post('/login', function () {
+    AccountController::handle_login();
+});
+
+
+$routes->get('/register', function () {
+    AccountController::register();
+});
+
+$routes->post('/register', function () {
+    AccountController::handle_register();
+});
+$routes->post('/logout', function () {
+    AccountController::handle_logout();
 });
 
 

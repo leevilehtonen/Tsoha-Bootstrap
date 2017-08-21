@@ -1,8 +1,8 @@
-INSERT INTO account (username, password, email, firstname, lastaname, status)
+INSERT INTO account (username, password, email, firstname, lastname, status)
 VALUES ('testuser1', '123456', 'testuser1@email.com', 'Antero', 'Korhonen', 'Ota yhteyttä rohkeasti');
-INSERT INTO account (username, password, email, firstname, lastaname, status)
+INSERT INTO account (username, password, email, firstname, lastname, status)
 VALUES ('testuser2', '123456', 'testuser2@email.com', 'Olavi', 'Virtanen', 'Lomalla');
-INSERT INTO account (username, password, email, firstname, lastaname, status)
+INSERT INTO account (username, password, email, firstname, lastname, status)
 VALUES ('testuser3', '123456', 'testuser3@email.com', 'Maria', 'Mäkinen', 'Hyvin menee');
 
 INSERT INTO discussion (title, description)

@@ -2,6 +2,22 @@
 
 {% block content %}
 
+
+{% if errors%}
+<div class=" alert alert-danger" role="alert">
+    {% for error in errors%}
+    <p>{{error}}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if message %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+</div>
+{% endif %}
+
+
 <div class="jumbotron" id="title-jumbotron">
     <div class="mx-auto">
         <h1 class="display-4">Keskustelut</h1>
@@ -35,7 +51,7 @@
             </div>
             <div class="col-2 col-sm-2 col-md-1">{{topic.getPostCount()}}</div>
             <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">ACCOUNT_ID: {{topic.getLast().account_id|default('Ei
+                <h6 class="list-group-item-poster"><a href="#">{{topic.getLast().getPoster().username|default('Ei
                     yhtään viestiä vielä')}}</a></h6>
                 <small class="text-muted">{{topic.getLast().posted}}</small>
             </div>
@@ -56,21 +72,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="{{base_path}}/discussion/{{discussion.id}}">
                     <div class="form-group">
                         <label for="input-name">Keskustelun nimi</label>
                         <input class="form-control" id="input-name" type="text" name="name"
-                               placeholder="Anna keskustelulle nimi" required/>
+                               placeholder="Anna keskustelulle nimi" value="{{attributes.name}}" required/>
                     </div>
                     <div class="form-group">
                         <label for="input-message">Aloitusviesti</label>
-                        <textarea class="form-control" id="input-message" rows="5" name="messgae"
-                                  placeholder="Anna aloitusviesti" required></textarea>
+                        <textarea class="form-control" id="input-message" rows="5" name="message"
+                                  placeholder="Anna aloitusviesti" required>{{attributes.message}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="input-tags">Tägit</label>
                         <input class="form-control" id="input-tags" type="text" name="tags" placeholder="Syötä tägejä"
-                               data-role="tagsinput"/>
+                               data-role="tagsinput" value="{{attributes.tags}}"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Lisää</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Peruuta</button>

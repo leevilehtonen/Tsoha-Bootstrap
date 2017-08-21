@@ -4,7 +4,7 @@ CREATE TABLE account (
   password  VARCHAR(64)         NOT NULL,
   email     VARCHAR(128) UNIQUE NOT NULL,
   firstname VARCHAR(64)         NOT NULL,
-  lastaname VARCHAR(64)         NOT NULL,
+  lastname VARCHAR(64)         NOT NULL,
   status    VARCHAR(256)
 );
 

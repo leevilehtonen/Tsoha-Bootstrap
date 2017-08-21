@@ -5,8 +5,7 @@
  * Date: 9.8.2017
  * Time: 21.03
  */
-require 'app/models/discussion.php';
-require 'app/models/topic.php';
+
 
 class DiscussionController extends BaseController{
 
@@ -24,13 +23,21 @@ class DiscussionController extends BaseController{
 
     public static function store()
     {
+        $discussions = Discussion::all();
         $params = $_POST;
-
-        $discussion = new Discussion(array(
+        $attributes = array(
             'title' => $params['title'],
             'description' => $params['description']
-        ));
-        $discussion->save();
-        Redirect::to('/discussion/' . $discussion->id, array('message', $discussion->title . ' -alue luotu'));
+        );
+        $discussion = new Discussion($attributes);
+
+        $errors = $discussion->errors();
+        if (count($errors) == 0) {
+            $discussion->save();
+            Redirect::to('/discussion/' . $discussion->id, array('message', $discussion->title . ' -alue luotu'));
+        } else {
+            View::make('discussion/index.html', array('errors' => $errors, 'attributes' => $attributes, 'discussions' => $discussions));
+        }
+
     }
 }

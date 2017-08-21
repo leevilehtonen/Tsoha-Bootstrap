@@ -13,6 +13,7 @@ class Topic extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
+        $this->validators = array('validate_title');
     }
 
     public static function all()
@@ -82,8 +83,8 @@ class Topic extends BaseModel
 
     public function save()
     {
-        $query = DB::connection()->prepare('INSERT INTO topic(discussion_id, title, created) VALUES(:discussion_id, :topic, :created) RETURNING id');
-        $query->execute(array('discussion_id' => $this->discussion_id, 'title' => $this->title, 'created' => $this->created));
+        $query = DB::connection()->prepare('INSERT INTO topic(discussion_id, title) VALUES(:discussion_id, :title) RETURNING id');
+        $query->execute(array('discussion_id' => $this->discussion_id, 'title' => $this->title));
 
         $row = $query->fetch();
         $this->id = $row['id'];
@@ -103,4 +104,30 @@ class Topic extends BaseModel
     {
         return Post::getByTopicFirstPost($this->id);
     }
+
+    public function getTags()
+    {
+        return Tag::findByTopic($this->id);
+    }
+
+    public function addTag($id)
+    {
+        $query = DB::connection()->prepare('INSERT INTO topic_tag(topic_id, tag_id) VALUES(:topic_id, :tag_id)');
+        $query->execute(array('topic_id' => $this->id, 'tag_id' => $id));
+    }
+
+
+    public function validate_title()
+    {
+        $errors = array();
+        if ($this->title == '' || $this->title == null) {
+            $errors[] = 'Otsikko ei voi olla tyhjä';
+        }
+
+        if (strlen($this->title) < 3) {
+            $errors[] = 'Otsikon tullee olla vähintään kolme kirjainta';
+        }
+        return $errors;
+    }
+
 }

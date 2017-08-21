@@ -8,6 +8,8 @@ class Post extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
+        $this->validators = array('validate_content');
+
     }
 
     public static function all()
@@ -31,11 +33,23 @@ class Post extends BaseModel
 
     public function save()
     {
-        $query = DB::connection()->prepare('INSERT INTO post(account_id, topic_id, content, posted) VALUES(:account_id, :topic_id, :content, :posted) RETURNING id');
-        $query->execute(array('account_id' => $this->account_id, 'topic_id' => $this->topic_id, 'content'=>$this->content, 'posted'=>$this->posted));
+        $query = DB::connection()->prepare('INSERT INTO post(account_id, topic_id, content) VALUES(:account_id, :topic_id, :content) RETURNING id');
+        $query->execute(array('account_id' => $this->account_id, 'topic_id' => $this->topic_id, 'content' => $this->content));
 
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+
+    public function update()
+    {
+        $query = DB::connection()->prepare('UPDATE post SET content = :content WHERE id = :id');
+        $query->execute(array('content' => $this->content, 'id' => $this->id));
+    }
+
+    public function destroy()
+    {
+        $query = DB::connection()->prepare('DELETE FROM post WHERE id = :id');
+        $query->execute(array('id' => $this->id));
     }
 
     public static function find($id)
@@ -150,6 +164,21 @@ class Post extends BaseModel
             return $post;
         }
         return null;
+    }
+
+    public function getPoster()
+    {
+        return Account::find($this->account_id);
+    }
+
+    public function validate_content()
+    {
+        $errors = array();
+        if ($this->content == '' || $this->content == null) {
+            $errors[] = 'Viestin sisältö ei voi olla tyhjä';
+        }
+
+        return $errors;
     }
 
 

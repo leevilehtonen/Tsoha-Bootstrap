@@ -5,10 +5,9 @@
     <div class="mx-auto">
         <h1 class="display-4">{{topic.title}}</h1>
         <p class="lead">
-            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
-            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
-            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
-            <span class="tag h6 my-1 badge badge-pill badge-primary">Tags</span>
+            {% for tag in topic.getTags() %}
+            <span class="tag h6 my-1 badge badge-pill badge-primary">{{tag.name}}</span>
+            {% endfor %}
         </p>
     </div>
 </div>
@@ -16,15 +15,25 @@
 {% for post in posts %}
 <div class="card post">
     <div class="card-header clearfix">
-        <h5 class="float-left post-poster"><a href="#">{{post.account_id}}</a></h5>
+        <h5 class="float-left post-poster"><a href="#">{{post.getPoster().username}}</a></h5>
         <span class="float-right">{{post.posted}}</span>
     </div>
     <div class="card-block">
         <p class="card-text">{{post.content}}</p>
     </div>
     <div class="card-footer">
-        <button type="button" class="btn btn-info btn-sm">Muokkaa</button>
-        <button type="button" class="btn btn-danger btn-sm">Poista</button>
+        {% if user_logged_in.id == post.account_id %}
+        <form method="post"
+              style="display: inline-block"
+              action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}/post/{{post.id}}/edit">
+            <button type="submit" class="btn btn-info btn-sm">Muokkaa</button>
+        </form>
+        <form method="post"
+              style="display: inline-block"
+              action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}/post/{{post.id}}/destroy">
+            <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+        </form>
+        {% endif %}
     </div>
 </div>
 {% endfor %}
@@ -33,10 +42,10 @@
 <div class="card card-outline-info">
     <h3 class="card-header card-info text-white">Vastaa</h3>
     <div class="card-block">
-        <form>
+        <form method="post" action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}">
             <div class="form-group">
                 <label for="input-message">Viesti</label>
-                <textarea class="form-control" id="input-message" rows="5" name="messgae"
+                <textarea class="form-control" id="input-message" rows="5" name="message"
                           placeholder="Kirjoita vastauksesi" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Lähetä</button>

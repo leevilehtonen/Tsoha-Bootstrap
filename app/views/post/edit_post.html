@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron" id="title-jumbotron">
+    <div class="mx-auto">
+        <h1 class="display-4">Muokkaa viestiäsi keskustelussa {{topic.title}}</h1>
+        <p class="lead">
+            {% for tag in topic.getTags() %}
+            <span class="tag h6 my-1 badge badge-pill badge-primary">{{tag.name}}</span>
+            {% endfor %}
+        </p>
+    </div>
+</div>
+<hr class="my-4">
+<div class="card post">
+    <div class="card-header clearfix">
+        <h5 class="float-left post-poster"><a href="#">{{post.getPoster().username}}</a></h5>
+        <span class="float-right">{{post.posted}}</span>
+    </div>
+    <form method="post"
+          action="{{base_path}}/discussion/{{topic.discussion_id}}/topic/{{topic.id}}/post/{{post.id}}/update">
+
+        <div class="card-block">
+            <div class="form-group">
+                <label for="input-message">Viesti</label>
+                <textarea class="form-control" id="input-message" rows="5" name="message"
+                          placeholder="Kirjoita vastauksesi" required>
+                    {{post.content}}
+                </textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info btn-sm">Tallenna</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

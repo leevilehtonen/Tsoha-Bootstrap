@@ -1,7 +1,5 @@
 <?php
 
-require 'app/models/post.php';
-
 
 class Discussion extends BaseModel
 {
@@ -10,6 +8,7 @@ class Discussion extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
+        $this->validators = array('validate_title', 'validate_description');
     }
 
     public static function all()
@@ -44,6 +43,7 @@ class Discussion extends BaseModel
         return Post::getByDiscussionLastPost($this->id);
     }
 
+
     public function save()
     {
         $query = DB::connection()->prepare('INSERT INTO discussion(title, description) VALUES(:title, :description) RETURNING id');
@@ -70,4 +70,29 @@ class Discussion extends BaseModel
         return null;
     }
 
+    public function validate_title()
+    {
+        $errors = array();
+        if ($this->title == '' || $this->title == null) {
+            $errors[] = 'Otsikko ei voi olla tyhjä';
+        }
+
+        if (strlen($this->title) < 3) {
+            $errors[] = 'Otsikon tullee olla vähintään kolme kirjainta';
+        }
+        return $errors;
+    }
+
+    public function validate_description()
+    {
+        $errors = array();
+        if ($this->description == '' || $this->description == null) {
+            $errors[] = 'Kuvaus ei voi olla tyhjä';
+        }
+
+        if (strlen($this->description) < 6) {
+            $errors[] = 'Kuvauksen tulee olla vähintään kuusi kirjainta';
+        }
+        return $errors;
+    }
 }
