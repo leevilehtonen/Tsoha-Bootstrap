@@ -24,3 +24,14 @@ Työn aiheena on keskustelufoorumi kaikille ruoanlaitosta kiinnostuneille. Kesku
 - [Aihealueiden listaus](https://lleevi.users.cs.helsinki.fi/tsoha/discussion) 
 - [Aihealueiden lisäys, sivulla olevasta linkistä aukeaa dialogi](https://lleevi.users.cs.helsinki.fi/tsoha/discussion)
 - [Aihealueen sivu](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1)
+
+### Linkit posts (CRUD)
+- [Viestien listaus aiheen sisällä](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1/topic/1) 
+- [Viestin lisäys, sivun lopussa olevan lomakkeen avulla (vain kirjautuneille)](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1/topic/1)
+- [Viestin muokkaus, oman viestin alapuolella olevasta napista (vain kirjautuneelle + vain oman viestin)](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1/topic/1)
+- [Viestin muokkaussivu (vain kirjautuneelle + vain oman viestin)](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1/topic/1/post/1/edit)
+- [Viestin poisto, oman viestin alapuolella olevasta napista (vain kirjautuneille + vain oman viestin)](https://lleevi.users.cs.helsinki.fi/tsoha/discussion/1/topic/1)
+
+
+### Kirjautuminen
+Sovellukseen on luotu kolme testikäyttäjää testaamista varten. Kirjautumaan pystyt käyttäen käyttäjätunnuksena `testuser1`, `testuser2` tai  `testuser3` käyttäjätunnuksia. Salasanana kaikilla testikäyttäjillä on `123456`.

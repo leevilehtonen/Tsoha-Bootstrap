@@ -61,8 +61,8 @@
                 <button class="btn btn-danger my-2 my-sm-0" type="submit">Ulos</button>
             </form>
             {% endif %}
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control mx-sm-2" type="text" placeholder="Hakusana">
+            <form method="get" action="{{base_path}}/discussion/search" class="form-inline my-2 my-md-0">
+                <input class="form-control mx-sm-2" type="text" name="query" placeholder="Hakusana">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Etsi</button>
             </form>
         </div>

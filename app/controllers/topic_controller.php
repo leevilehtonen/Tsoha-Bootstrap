@@ -41,6 +41,8 @@ class TopicController extends BaseController{
             $post->save();
 
             $tagArray = explode(',', $attributes['tags']);
+            $tagArray = array_map('strtolower', $tagArray);
+
             foreach ($tagArray as $tagStr) {
                 $tag = Tag::findByName($tagStr);
                 if ($tag == null) {

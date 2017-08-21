@@ -21,6 +21,18 @@ class DiscussionController extends BaseController{
         View::make('discussion/topics.html', array('discussion' => $discussion, 'topics' => $topics));
     }
 
+    public static function search()
+    {
+        $params = $_GET;
+        if (!isset($params['query'])) {
+            Redirect::to('/discussion');
+        }
+        $search = $params['query'];
+        $discussion = new Discussion(array('title' => 'haku'));
+        $topics = Topic::findByQuery($search);
+        View::make('discussion/topics.html', array('discussion' => $discussion, 'topics' => $topics));
+    }
+
     public static function store()
     {
         $discussions = Discussion::all();

@@ -70,6 +70,34 @@ class Topic extends BaseModel
         return $topics;
     }
 
+    public static function findByQuery($search)
+    {
+        $words = str_replace(' ', ',', $search);
+        $tags = explode(',', $words);
+
+        $tagQuery = ' ';
+        foreach ($tags as $tag) {
+            $tagQuery = $tagQuery . 'tag.name = \'' . strtolower($tag) . '\' OR ';
+        }
+        $tagQuery = substr($tagQuery, 0, -4);
+
+
+        $query = DB::connection()->prepare('SELECT * FROM topic, tag, topic_tag WHERE topic.id = topic_tag.topic_id AND tag.id = topic_tag.tag_id AND (' . $tagQuery . ')');
+        $query->execute();
+        $rows = $query->fetchAll();
+        $topics = array();
+
+        foreach ($rows as $row) {
+            $topics[] = new Topic(array(
+                'id' => $row['id'],
+                'discussion_id' => $row['discussion_id'],
+                'title' => $row['title'],
+                'created' => $row['created']
+            ));
+        }
+        return $topics;
+    }
+
     public static function getTopicCountByDiscussion($id)
     {
         $query = DB::connection()->prepare('SELECT COUNT(*) AS topics FROM topic WHERE topic.discussion_id = :id');
