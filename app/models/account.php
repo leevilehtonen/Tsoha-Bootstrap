@@ -154,11 +154,11 @@ class Account extends BaseModel
     public function validate_password()
     {
         $errors = array();
-        if ($this->username == '' || $this->username == null) {
+        if ($this->password == '' || $this->password == null) {
             $errors[] = 'Salasana ei voi olla tyhjä';
         }
 
-        if (strlen($this->username) < 6) {
+        if (strlen($this->password) < 6) {
             $errors[] = 'Salasanan tulee olla vähintään kuusi merkkiä pitkä';
         }
 
@@ -171,6 +171,11 @@ class Account extends BaseModel
         $row = $query->fetch();
         return $row['posts'];
 
+    }
+    public function update()
+    {
+        $query = DB::connection()->prepare('UPDATE account SET username = :username, email = :email, firstname = :firstname, lastname = :lastname, status = :status WHERE id = :id');
+        $query->execute(array('username' => $this->username, 'email' => $this->email, 'firstname' => $this->firstname, 'lastname' => $this->lastname, 'status' => $this->status, 'id' => $this->id));
     }
 
     public function destroy()

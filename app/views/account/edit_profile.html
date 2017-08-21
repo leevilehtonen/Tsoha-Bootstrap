@@ -10,12 +10,12 @@
     </div>
 </div>
 <hr class="my-4">
-<form class="user-info">
+<form class="user-info" method="post" action="{{base_path}}/account/{{account.id}}/update">
     <div class="form-group row">
         <label class="col-5 col-sm-4 col-md-2 col-form-label"
                for="input-username"><strong>Käyttäjätunnus:</strong></label>
         <div class="col-7 col-sm-8 col-md-10">
-            <input class="form-control" id="input-username" type="text" name="username" value="käyttäjätunnus"
+            <input class="form-control" id="input-username" type="text" name="username" value="{{account.username}}"
                    placeholder="Käyttäjätunnus"
                    required/>
         </div>
@@ -24,14 +24,14 @@
         <label class="col-5 col-sm-4 col-md-2 col-form-label" for="input-status"><strong>Fiilisviesti:</strong></label>
         <div class="col-7 col-sm-8 col-md-10">
             <input class="form-control" id="input-status" type="text" name="status"
-                   value="tässä on minun fiilisviestini" placeholder="Fiilisviesti"
+                   value="{{account.status}}" placeholder="Fiilisviesti"
                    required/>
         </div>
     </div>
     <div class="form-group row">
         <label class="col-5 col-sm-4 col-md-2 col-form-label" for="input-email"><strong>Sähköposti:</strong></label>
         <div class="col-7 col-sm-8 col-md-10">
-            <input class="form-control" id="input-email" type="email" name="username" value="email.email@email.com"
+            <input class="form-control" id="input-email" type="email" name="username" value="{{account.email}}"
                    placeholder="Sähköposti"
                    required/>
         </div>
@@ -39,21 +39,20 @@
     <div class="form-group row">
         <label class="col-5 col-sm-4 col-md-2 col-form-label" for="input-firstname"><strong>Etunimi:</strong></label>
         <div class="col-7 col-sm-8 col-md-10">
-            <input class="form-control" id="input-firstname" type="text" name="firstname" value="etunimi"
+            <input class="form-control" id="input-firstname" type="text" name="firstname" value="{{account.firstname}}"
                    placeholder="Etunimi" required/>
         </div>
     </div>
     <div class="form-group row">
         <label class="col-5 col-sm-4 col-md-2 col-form-label" for="input-lastname"><strong>Sukunimi:</strong></label>
         <div class="col-7 col-sm-8 col-md-10">
-            <input class="form-control" id="input-lastname" type="text" name="lastname" value="sukunimi"
+            <input class="form-control" id="input-lastname" type="text" name="lastname" value="{{account.lastname}}"
                    placeholder="Sukunimi" required/>
         </div>
     </div>
     <div class="row">
         <div class="col-7 col-sm-8 col-md-10 offset-5 offset-sm-4 offset-md-2">
             <button type="submit" class="btn btn-primary">Tallenna</button>
-            <button type="button" class="btn btn-secondary">Peruuta</button>
         </div>
     </div>
 </form>

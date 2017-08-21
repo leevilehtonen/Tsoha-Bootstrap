@@ -65,11 +65,31 @@ class AccountController extends BaseController
     }
 
     public static function edit($id) {
-
+        $account = Account::find($id);
+        View::make('account/edit_profile.html', array('account' => $account));
     }
 
     public static function update($id) {
+        $params = $_POST;
 
+        $attributes = array(
+            'id' => $id,
+            'username' => $params['username'],
+            'email' => $params['email'],
+            'firstname' => $params['firstname'],
+            'lastname' => $params['lastname'],
+            'status' => $params['status'],
+        );
+
+        $account = new Account($attributes);
+        $errors = $account->errors();
+
+        if (count($errors) == 0) {
+            $account->update();
+            Redirect::to('/account/' . $account->id, array('message' => 'Muokkasit käyttäjätietojasi onnistuneesti'));
+        } else {
+            View::make('account/edit_profile.html', array($account, 'errors' => $errors));
+        }
     }
 
     public static function destroy($id)
