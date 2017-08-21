@@ -8,7 +8,6 @@ class AccountController extends BaseController
     {
         View::make('account/login.html');
     }
-
     public static function handle_login()
     {
         $params = $_POST;

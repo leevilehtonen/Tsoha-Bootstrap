@@ -66,16 +66,16 @@ $routes->post('/logout', function () {
 });
 
 //Profile
-$routes->get('/account/:id', function ($id) {
+$routes->get('/account/:id', 'check_logged_in', function ($id) {
     AccountController::show($id);
 });
-$routes->post('/account/:id/edit', function ($id) {
+$routes->post('/account/:id/edit', 'check_logged_in', function ($id) {
     AccountController::edit($id);
 });
-$routes->post('/account/:id/update', function ($id) {
+$routes->post('/account/:id/update', 'check_logged_in', function ($id) {
     AccountController::update($id);
 });
-$routes->post('/account/:id/destroy', function ($id) {
+$routes->post('/account/:id/destroy', 'check_logged_in', function ($id) {
     AccountController::destroy($id);
 });
 
