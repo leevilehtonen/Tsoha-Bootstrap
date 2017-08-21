@@ -55,7 +55,7 @@
             <div class="col-2 col-sm-2 col-md-1">{{discussion.getTopicCount()}}</div>
             <div class="col-2 col-sm-2 col-md-1">{{discussion.getPostCount()}}</div>
             <div class="col-3 col-sm-2 col-md-2">
-                <h6 class="list-group-item-poster"><a href="#">{{discussion.getLastPost().getPoster().username|default('Ei
+                <h6 class="list-group-item-poster"><a href="{{base_path}}/account/{{discussion.getLastPost().getPoster().id}}">{{discussion.getLastPost().getPoster().username|default('Ei
                     yhtään viestiä vielä')}}</a>
                 </h6>
                 <small class="text-muted">{{discussion.getLastPost().posted}}</small>

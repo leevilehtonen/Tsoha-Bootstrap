@@ -44,7 +44,7 @@
                 {% if user_logged_in %}
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{base_path}}/profile">Profiili</a>
+                    <a class="nav-link" href="{{base_path}}/account/{{user_logged_in.id}}">Profiili</a>
                 </li>
 
                 {% else %}

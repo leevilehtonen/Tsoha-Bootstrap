@@ -52,22 +52,34 @@ $routes->post('/discussion/:discussionId/topic/:topicId/post/:postId/destroy', '
 $routes->get('/login', function () {
     AccountController::login();
 });
-
 $routes->post('/login', function () {
     AccountController::handle_login();
 });
-
-
 $routes->get('/register', function () {
     AccountController::register();
 });
-
 $routes->post('/register', function () {
     AccountController::handle_register();
 });
 $routes->post('/logout', function () {
     AccountController::handle_logout();
 });
+
+//Profile
+$routes->get('/account/:id', function ($id) {
+    AccountController::show($id);
+});
+$routes->post('/account/:id/edit', function ($id) {
+    AccountController::edit($id);
+});
+$routes->post('/account/:id/update', function ($id) {
+    AccountController::update($id);
+});
+$routes->post('/account/:id/destroy', function ($id) {
+    AccountController::destroy($id);
+});
+
+
 
 
 

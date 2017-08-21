@@ -59,4 +59,27 @@ class AccountController extends BaseController
         Redirect::to('/', array('message' => 'Kirjauduit ulos'));
     }
 
+    public static function show($id) {
+        $account = Account::find($id);
+        View::make('account/profile.html', array('account' => $account));
+    }
+
+    public static function edit($id) {
+
+    }
+
+    public static function update($id) {
+
+    }
+
+    public static function destroy($id)
+    {
+        $account = Account::find($id);
+        $account->destroy();
+        $_SESSION = array();
+        unset($_SESSION);
+        session_destroy();
+        Redirect::to('/', array('message' => 'Poistit käyttäjäsi onnistuneesti'));
+    }
+
 }

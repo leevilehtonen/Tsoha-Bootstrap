@@ -164,7 +164,20 @@ class Account extends BaseModel
 
         return $errors;
     }
+    public function getPostCount() {
+        $query = DB::connection()->prepare('SELECT COUNT(*) AS posts FROM post WHERE post.account_id = :id');
+        $query->execute(array('id' => $this->id));
 
+        $row = $query->fetch();
+        return $row['posts'];
+
+    }
+
+    public function destroy()
+    {
+        $query = DB::connection()->prepare('DELETE FROM account WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+    }
 
 
 

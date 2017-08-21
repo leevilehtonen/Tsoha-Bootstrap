@@ -14,7 +14,7 @@
 <hr class="my-4">
 <div class="card post">
     <div class="card-header clearfix">
-        <h5 class="float-left post-poster"><a href="#">{{post.getPoster().username}}</a></h5>
+        <h5 class="float-left post-poster"><a href="{{base_path}}/account/{{post.getPoster().id}}">{{post.getPoster().username}}</a></h5>
         <span class="float-right">{{post.posted}}</span>
     </div>
     <form method="post"
