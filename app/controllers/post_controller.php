@@ -10,7 +10,7 @@ class PostController extends BaseController
         $topic = Topic::find($id);
         $posts = Post::getByTopic($id);
         $attributes = array(
-            'content' => $params['message'],
+            'content' => trim($params['message']),
             'account_id' => self::get_user_logged_in()->id,
             'topic_id' => $id
         );
@@ -21,7 +21,7 @@ class PostController extends BaseController
             $post->save();
             Redirect::to('/discussion/' . $topic->discussion_id . '/topic/' . $id, array('message', 'Viesti lisätty'));
         } else {
-            View::make('topics/posts.html', array('errors' => $errors, 'attributes' => $attributes, 'topic' => $topic, 'posts' => $posts));
+            View::make('topic/posts.html', array('errors' => $errors, 'attributes' => $attributes, 'topic' => $topic, 'posts' => $posts));
         }
     }
 

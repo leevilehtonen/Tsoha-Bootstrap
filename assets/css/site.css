@@ -7,6 +7,9 @@ body {
     margin-bottom: 60px;
 }
 
+form {
+    margin-bottom: 0;
+}
 .navbar {
     margin-bottom: 20px;
 }

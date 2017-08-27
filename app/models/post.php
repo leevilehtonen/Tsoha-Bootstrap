@@ -174,7 +174,7 @@ class Post extends BaseModel
     public function validate_content()
     {
         $errors = array();
-        if ($this->content == '' || $this->content == null) {
+        if ($this->content == '' || $this->content == null || strlen(trim($this->content)) == 0) {
             $errors[] = 'Viestin sisältö ei voi olla tyhjä';
         }
 
