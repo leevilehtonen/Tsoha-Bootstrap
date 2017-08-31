@@ -178,6 +178,10 @@ class Post extends BaseModel
             $errors[] = 'Viestin sisältö ei voi olla tyhjä';
         }
 
+        if (strlen($this->content) > 4096) {
+            $errors[] = 'Viesti saa olla korkeintaan 4096 kirjainta';
+        }
+
         return $errors;
     }
 

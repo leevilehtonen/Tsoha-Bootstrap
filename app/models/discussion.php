@@ -80,6 +80,10 @@ class Discussion extends BaseModel
         if (strlen($this->title) < 3) {
             $errors[] = 'Otsikon tullee olla vähintään kolme kirjainta';
         }
+
+        if (strlen($this->title) > 64) {
+            $errors[] = 'Otsikko saa olla korkeintaan 64 kirjainta';
+        }
         return $errors;
     }
 
@@ -92,6 +96,10 @@ class Discussion extends BaseModel
 
         if (strlen($this->description) < 6) {
             $errors[] = 'Kuvauksen tulee olla vähintään kuusi kirjainta';
+        }
+
+        if (strlen($this->description) > 64) {
+            $errors[] = 'Kuvaus saa olla korkeintaan 64 kirjainta';
         }
         return $errors;
     }

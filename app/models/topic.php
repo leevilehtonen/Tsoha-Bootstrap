@@ -155,6 +155,9 @@ class Topic extends BaseModel
         if (strlen($this->title) < 3) {
             $errors[] = 'Otsikon tullee olla vähintään kolme kirjainta';
         }
+        if (strlen($this->title) > 128) {
+            $errors[] = 'Otsikko saa olla korkeintaan 64 kirjainta';
+        }
         return $errors;
     }
 

@@ -8,7 +8,7 @@ class Tag extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
-        $this->validators = array();
+        $this->validators = array('validate_tag');
 
     }
 
@@ -85,5 +85,19 @@ class Tag extends BaseModel
         $query->execute(array('name' => $this->name));
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+
+    public function validate_tag()
+    {
+        $errors = array();
+        if ($this->name == '' || $this->name == null || strlen(trim($this->name)) == 0) {
+            $errors[] = 'Tagin sisältö ei voi olla tyhjä';
+        }
+
+        if (strlen($this->name) > 32) {
+            $errors[] = 'Tag saa olla korkeintaan 32 kirjainta';
+        }
+
+        return $errors;
     }
 }

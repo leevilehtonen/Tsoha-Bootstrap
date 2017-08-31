@@ -15,7 +15,7 @@ class Account extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
-        $this->validators = array('validate_email', 'validate_username', 'validate_password');
+        $this->validators = array('validate_email', 'validate_username', 'validate_password', 'validate_firstname', 'validate_lastname', 'validate_status');
     }
 
     public static function find($id)
@@ -126,6 +126,10 @@ class Account extends BaseModel
             $errors[] = 'Käyttäjätunnuksen tulee olla vähintään neljä merkkiä pitkä';
             return $errors;
         }
+        if (strlen($this->username) > 32) {
+            $errors[] = 'Käyttäjätunnuksen saa olla korkeintaan 32 merkkiä';
+            return $errors;
+        }
 
         if (Account::findByUsername($this->username) != null) {
             $errors[] = 'Käyttäjätunnus on jo olemassa';
@@ -144,6 +148,13 @@ class Account extends BaseModel
             $errors[] = 'Käyttäjätunnuksen tulee olla vähintään neljä merkkiä pitkä';
             return $errors;
         }
+        if (strlen($this->username) > 32) {
+            $errors[] = 'Käyttäjätunnuksen saa olla korkeintaan 32 merkkiä';
+            return $errors;
+        }
+        if (Account::findByUsername($this->username) != null && Account::findByUsername($this->username)->id != $this->id) {
+            $errors[] = 'Käyttäjätunnus on jo olemassa';
+        }
         return $errors;
     }
 
@@ -157,6 +168,12 @@ class Account extends BaseModel
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Sähköposti ei ole kelvollisessa muodosssa';
         }
+
+        if (strlen($this->email) > 128) {
+            $errors[] = 'Sähköposti saa olla korkeintaan 128 merkkiä';
+            return $errors;
+        }
+
 
         if (Account::findByEmail($this->email) != null) {
             $errors[] = 'Sähköpostilla rekisteröity käyttäjä on jo olemassa';
@@ -172,8 +189,18 @@ class Account extends BaseModel
             $errors[] = 'Sähköposti ei voi olla tyhjä';
         }
 
+        if (strlen($this->email) > 128) {
+            $errors[] = 'Sähköposti saa olla korkeintaan 128 merkkiä';
+            return $errors;
+        }
+
+
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Sähköposti ei ole kelvollisessa muodosssa';
+        }
+
+        if (Account::findByEmail($this->email) != null && Account::findByEmail($this->email)->id != $this->id) {
+            $errors[] = 'Sähköpostilla rekisteröity käyttäjä on jo olemassa';
         }
 
         return $errors;
@@ -190,8 +217,61 @@ class Account extends BaseModel
             $errors[] = 'Salasanan tulee olla vähintään kuusi merkkiä pitkä';
         }
 
+        if (strlen($this->password) > 64) {
+            $errors[] = 'Salasana saa olla korkeintaan 64 merkkiä pitkä';
+        }
+
         return $errors;
     }
+
+    public function validate_firstname()
+    {
+        $errors = array();
+        if ($this->firstname == '' || $this->firstname == null) {
+            $errors[] = 'Etunimi ei voi olla tyhjä';
+        }
+
+        if (strlen($this->firstname) < 2) {
+            $errors[] = 'Etunimen tulee olla vähintään kaksi merkkiä pitkä';
+        }
+
+        if (strlen($this->firstname) > 64) {
+            $errors[] = 'Etunimi saa olla korkeintaan 64 merkkiä pitkä';
+        }
+
+        return $errors;
+    }
+
+    public function validate_lastname()
+    {
+        $errors = array();
+        if ($this->lastname == '' || $this->lastname == null) {
+            $errors[] = 'Sukunimi ei voi olla tyhjä';
+        }
+
+        if (strlen($this->lastname) < 2) {
+            $errors[] = 'Sukunimen tulee olla vähintään kaksi merkkiä pitkä';
+        }
+
+        if (strlen($this->lastname) > 64) {
+            $errors[] = 'Sukunimi saa olla korkeintaan 64 merkkiä pitkä';
+        }
+
+        return $errors;
+    }
+
+    public function validate_status()
+    {
+        $errors = array();
+
+        if (strlen($this->status) > 64) {
+            $errors[] = 'Fiilisviesti saa olla korkeintaan 256 merkkiä pitkä';
+        }
+
+        return $errors;
+    }
+
+
     public function getPostCount() {
         $query = DB::connection()->prepare('SELECT COUNT(*) AS posts FROM post WHERE post.account_id = :id');
         $query->execute(array('id' => $this->id));
@@ -215,6 +295,10 @@ class Account extends BaseModel
         $errors = array();
         $errors = array_merge($errors, $this->validate_email_update());
         $errors = array_merge($errors, $this->validate_username_update());
+        $errors = array_merge($errors, $this->validate_lastname());
+        $errors = array_merge($errors, $this->validate_firstname());
+        $errors = array_merge($errors, $this->validate_status());
+
         return $errors;
     }
 
